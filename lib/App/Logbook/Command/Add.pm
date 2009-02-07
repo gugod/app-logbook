@@ -1,4 +1,4 @@
-package App::Logbook::Command::Text;
+package App::Logbook::Command::Add;
 use strict;
 use warnings;
 use feature ':5.10';
