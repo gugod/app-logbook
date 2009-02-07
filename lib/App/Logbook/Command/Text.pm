@@ -11,18 +11,13 @@ use App::Logbook::Text;
 use self;
 
 sub run {
-
     my $dir = App::Logbook::DB->connect;
     my $scope = $dir->new_scope;
 
-    my $obj = App::Logbook::Text->new(
-	content => join(" ", @args),
-	created_by => $ENV{USER},
-	
-    );
+    my $obj = App::Logbook::Text->new( content => join(" ", @args) );
     $dir->store($obj);
 
-    say "Stored";
+    say "... stored";
 }
 
 1;
