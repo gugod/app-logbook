@@ -1,20 +1,22 @@
 package App::Logbook::Text;
-use DateTime;
 use Moose;
 
 extends 'App::Logbook::Entry';
 
 has content => ( isa => "Str", is => "rw", require => 1 );
 
-use overload
-    '""' => \&as_string;
+augment 'as_string' => sub {
+    my $self = shift;
+    return $self->content;
+};
 
-use self;
+override 'BUILDARGS' => sub {
+    my ($self, @args) = @_;
 
-sub as_string {
-    my $dt = $self->created_at;
-    my $t = $dt ? $dt->iso8601 : "(unknown time)";
-    return $self->created_by . ", $t: " . $self->content;    
-}
+    return super() if @args > 1;
+
+    my $str = $args[0];
+    return { content => $str };
+};
 
 1;

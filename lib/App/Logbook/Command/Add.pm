@@ -23,10 +23,12 @@ sub run {
     my $entry_class = "App::Logbook::" . ucfirst( lc($format) );
     $entry_class->require or die "Unkonw logbook format: $format\n";
 
-    my $obj = $entry_class->new( content => join(" ", @args) );
-    $dir->store($obj);
+    my $str = join " ", @args;
 
-    say "... stored";
+    my $obj = $entry_class->new( $str );
+
+    $dir->store($obj);
+    say "stored.";
 }
 
 1;

@@ -1,5 +1,6 @@
 package App::Logbook::Entry;
 use Moose;
+use DateTime;
 
 has created_at => (
     isa => "DateTime",
@@ -13,5 +14,15 @@ has created_by => (
     default => sub { $ENV{USER} || '(unknown)' }
 );
 
-1;
+use overload
+    '""' => \&as_string;
 
+use self;
+
+sub as_string {
+    my $dt = $self->created_at;
+    my $t = $dt ? $dt->ymd("/") . " " . $dt->hms : "(unknown time)";
+    return $self->created_by . ", $t: " . inner();
+}
+
+1;
