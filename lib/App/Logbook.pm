@@ -10,15 +10,19 @@ __END__
 
 =head1 NAME
 
-App::Logbook -
+App::Logbook - A multi-purpose personal logging software
 
 =head1 SYNOPSIS
 
-  use App::Logbook;
+    logbook help
+
+    logbook add
+
+    logbook add --format expense
 
 =head1 DESCRIPTION
 
-App::Logbook is
+To be written...
 
 =head1 AUTHOR
 
@@ -26,9 +30,12 @@ Kang-min Liu E<lt>gugod@gugod.orgE<gt>
 
 =head1 SEE ALSO
 
-=head1 LICENSE
+=head1 LICENCE AND COPYRIGHT
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+Copyright (c) 2009, Kang-min Liu C<< <gugod@gugod.org> >>.
+
+This is free software, licensed under:
+
+    The MIT (X11) License
 
 =cut
