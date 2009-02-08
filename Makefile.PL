@@ -17,6 +17,8 @@ requires
     'UNIVERSAL::require'	=> 0,
     'self'			=> 0;
 
+install_script "bin/logbook";
+
 build_requires 'Test::More';
 use_test_base;
 auto_include;
