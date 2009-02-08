@@ -10,8 +10,6 @@ use UNIVERSAL::require;
 use App::Logbook::DB;
 use App::Logbook::CommandHelpers ':all';
 
-use self;
-
 my $format = "text";
 
 sub options {
@@ -22,7 +20,6 @@ use YAML::Any;
 use List::MoreUtils qw(mesh);
 
 sub run {
-
     my $entry_class = "App::Logbook::" . ucfirst( lc($format) );
     $entry_class->require or die "Unkonw logbook format: $format\n";
 

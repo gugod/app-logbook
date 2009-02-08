@@ -1,17 +1,14 @@
 use inc::Module::Install;
 name 'App-Logbook';
 all_from 'lib/App/Logbook.pm';
-
-# requires '';
-
-tests 't/*.t';
-author_tests 'xt';
+version '0.00_1';
 
 requires
     'App::CLI'			   => 0,
     'App::CLI::Command'		   => 0,
     'DateTime'			   => 0,
     'DateTime::Format::Natural'	   => 0,
+    'File::Path'                   => 0,
     'KiokuDB'			   => 0,
     'Moose'			   => 0,
     'Proc::InvokeEditor'	   => 0,
@@ -20,6 +17,9 @@ requires
     'YAML::Any'			   => 0,
     'self'			   => 0,
 ;
+
+tests 't/*.t';
+author_tests 'xt';
 
 install_script "bin/logbook";
 
