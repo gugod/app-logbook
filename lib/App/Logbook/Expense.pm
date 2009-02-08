@@ -1,8 +1,8 @@
 package App::Logbook::Expense;
 use Moose;
 use DateTime;
-use Date::Manip qw(ParseDate);
 use DateTime::Format::Natural;
+use Text::Trim;
 
 extends 'App::Logbook::Entry';
 
@@ -23,7 +23,7 @@ override 'BUILDARGS' => sub {
     return super() if @args > 1;
 
     my $str = $args[0];
-    my @matched = split /[, ]+/, $str, 3;
+    my @matched = split /,+/, $str, 3;
 
     die "Don't understand: $str\n"
 	if @matched != 3;
@@ -35,7 +35,7 @@ override 'BUILDARGS' => sub {
 	amount => $1,
 	currency => $2 || "USD",
 	date => DateTime::Format::Natural->new->parse_datetime( $matched[1] ),
-	reason => $matched[2]
+	reason => trim($matched[2])
     }
 };
 
