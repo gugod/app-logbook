@@ -9,7 +9,6 @@ author_tests 'xt';
 
 requires
     'App::CLI'			=> 0,
-    'App::Logbook::DB'		=> 0,
     'DateTime'			=> 0,
     'DateTime::Format::Natural' => 0,
     'KiokuDB'			=> 0,
