@@ -5,28 +5,35 @@ use feature ':5.10';
 
 use base 'App::CLI::Command';
 
-use App::Logbook::DB;
 use UNIVERSAL::require;
+
+use App::Logbook::DB;
+use App::Logbook::CommandHelpers ':all';
 
 use self;
 
 my $format = "text";
 
-sub options {(
-    'format=s' => \$format,
-)}
+sub options {
+    ('format=s' => \$format)
+}
+
+use YAML::Any;
+use List::MoreUtils qw(mesh);
 
 sub run {
-    my $dir = App::Logbook::DB->connect;
-    my $scope = $dir->new_scope;
 
     my $entry_class = "App::Logbook::" . ucfirst( lc($format) );
     $entry_class->require or die "Unkonw logbook format: $format\n";
 
-    my $str = join " ", @args;
+    my $obj = $entry_class->new(
+	invoke_hash_editor({
+	    mesh @{[ keys %{$entry_class->meta->get_attribute_map} ]}, @{[]}
+	})
+    );
 
-    my $obj = $entry_class->new( $str );
-
+    my $dir = App::Logbook::DB->connect;
+    my $scope = $dir->new_scope;
     $dir->store($obj);
     say "stored.";
 }

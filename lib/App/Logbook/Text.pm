@@ -10,13 +10,4 @@ augment 'as_string' => sub {
     return $self->content;
 };
 
-override 'BUILDARGS' => sub {
-    my ($self, @args) = @_;
-
-    return super() if @args > 1;
-
-    my $str = $args[0];
-    return { content => $str };
-};
-
 1;
