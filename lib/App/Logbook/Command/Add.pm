@@ -22,6 +22,7 @@ use List::MoreUtils qw(mesh);
 sub run {
     my $entry_class = "App::Logbook::" . ucfirst( lc($format) );
     $entry_class->require or die "Unkonw logbook format: $format\n";
+    my $dir = App::Logbook::DB->connect;
 
     my $obj = $entry_class->new(
 	invoke_hash_editor({
@@ -29,7 +30,6 @@ sub run {
 	})
     );
 
-    my $dir = App::Logbook::DB->connect;
     my $scope = $dir->new_scope;
     $dir->store($obj);
     say "stored.";
