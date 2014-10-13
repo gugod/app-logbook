@@ -25,7 +25,7 @@ sub run {
 
     my $obj = $entry_class->new(
 	invoke_hash_editor({
-	    mesh @{[ keys %{$entry_class->meta->get_attribute_map} ]}, @{[]}
+	    mesh @{[$entry_class->meta->get_attribute_list]}, @{[]}
 	})
     );
 

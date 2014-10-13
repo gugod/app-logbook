@@ -17,9 +17,8 @@ has created_by => (
 use overload
     '""' => \&as_string;
 
-use self;
-
 sub as_string {
+    my ($self) = @_;
     my $dt = $self->created_at;
     my $t = $dt ? $dt->ymd("/") . " " . $dt->hms : "(unknown time)";
     return $self->created_by . ", $t: " . inner();

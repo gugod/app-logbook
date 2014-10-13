@@ -3,7 +3,7 @@ use Moose;
 
 extends 'App::Logbook::Entry';
 
-has content => ( isa => "Str", is => "rw", require => 1 );
+has content => ( isa => "Str", is => "rw", required => 1 );
 
 augment 'as_string' => sub {
     my $self = shift;

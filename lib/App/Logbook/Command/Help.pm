@@ -1,7 +1,6 @@
 package App::Logbook::Command::Help;
 
 use base 'App::CLI::Command';
-use self;
 
 sub run {
     print <<USAGE;

@@ -9,14 +9,13 @@ requires
     'DateTime'			   => 0,
     'DateTime::Format::Natural'	   => 0,
     'File::Path'                   => 0,
-    'KiokuDB'			   => 0,
-    'Moose'			   => 0,
+    'KiokuDB'			   => 0.57,
+    'KiokuDB::Backend::DBI'	   => 1.23,
+    'Moose'			   => 2,
     'Proc::InvokeEditor'	   => 0,
     'Text::Trim'		   => 0,
     'UNIVERSAL::require'	   => 0,
-    'YAML::Any'			   => 0,
-    'self'			   => 0,
-;
+    'YAML::Any'			   => 0;
 
 tests 't/*.t';
 author_tests 'xt';
