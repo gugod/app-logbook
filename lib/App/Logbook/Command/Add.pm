@@ -1,7 +1,7 @@
 package App::Logbook::Command::Add;
+use v5.12;
 use strict;
 use warnings;
-use feature ':5.10';
 
 use base 'App::CLI::Command';
 
